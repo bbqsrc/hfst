@@ -22,8 +22,8 @@ else()
     find_package(PkgConfig)
     include_directories(ICU_INCLUDE_DIRS)
     pkg_check_modules(ICU icu-uc REQUIRED)
-    set(CMAKE_CXX_FLAGS "-std=c++14 -w -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CXX_FLAGS}")
-    set(CMAKE_C_FLAGS "-w -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "-std=c++14 -w -O2 -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "-w -O2 -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_C_FLAGS}")
 endif()
 
 find_package(FLEX 2.6 REQUIRED)
@@ -112,10 +112,23 @@ set(STDC_HEADERS 1)
 set(USE_ICU_UNICODE 1)
 set(YYTEXT_POINTER 1)
 
-# set(HAVE_SFST " ")
+option(ENABLE_SFST "enables SFST backend" OFF)
+if(ENABLE_SFST)
+set(HAVE_SFST " ")
+endif()
+
+option(ENABLE_FOMA "enables Foma backend" OFF)
+if(ENABLE_FOMA)
 set(HAVE_FOMA " ")
+endif()
+
+option(ENABLE_OPENFST "enables OpenFST backend" OFF)
+if(ENABLE_OPENFST)
 set(HAVE_OPENFST " ")
 set(HAVE_OPENFST_LOG " ")
+endif()
+
+# Not configurable.
 set(HAVE_HFSTOL " ")
 
 configure_file(config.h.in config.h)

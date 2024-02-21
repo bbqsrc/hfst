@@ -93,7 +93,7 @@ add_dependencies(hfst parsers)
 
 
 if(HAVE_SFST)
-    target_source(hfst PUBLIC
+    target_sources(hfst PUBLIC
         SfstCompiler.cc SfstUtf8.cc SfstBasic.cc SfstAlphabet.cc)
 endif()
 
