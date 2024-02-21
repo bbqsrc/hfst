@@ -1,10 +1,12 @@
 add_library(foma OBJECT)
-target_compile_options(foma PRIVATE
-    "-Wno-deprecated"
-    "-Wdeprecated-non-prototype"
-    "-std=c99"
-    "-D_XOPEN_SOURCE=500"
-)
+if(NOT WIN32)
+    target_compile_options(foma PRIVATE
+        "-Wno-deprecated"
+        "-Wdeprecated-non-prototype"
+        "-std=c99"
+        "-D_XOPEN_SOURCE=500"
+    )
+endif()
 target_sources(foma PRIVATE
     int_stack.c define.c determinize.c apply.c
     rewrite.c lexcread.c topsort.c flags.c minimize.c reverse.c

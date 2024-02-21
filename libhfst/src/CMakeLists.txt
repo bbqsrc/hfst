@@ -6,15 +6,12 @@ if(NOT WIN32)
         "-I${PROJECT_SOURCE_DIR}/libhfst/src"
         "-I${PROJECT_SOURCE_DIR}/back-ends")
 else()
+    target_link_libraries(hfst PRIVATE dlfcn-win32::dl)
     target_compile_options(hfst PRIVATE
         "/I."
         "/I${PROJECT_SOURCE_DIR}/libhfst/src"
         "/I${PROJECT_SOURCE_DIR}/back-ends")
 endif()
-
-# message(${INCLUDES})
-
-# message(${ICU_LIBRARIES})
 
 target_include_directories(hfst PRIVATE
     ${ICU_INCLUDE_DIRS}

@@ -1846,7 +1846,7 @@ int my_yyparse(char *my_string, int lineno, struct defined_networks *defined_net
 #define UQ 4
 #define EQ 5
 #define ENDQ 6
-
+#define YY_NO_UNISTD_H
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
  * down here because we want the user's section 1 to have been scanned first.

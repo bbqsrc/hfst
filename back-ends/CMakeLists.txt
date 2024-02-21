@@ -1,9 +1,3 @@
-
-if(NOT HAVE_DLFCN_H)
-  add_subdirectory(dlfcn)
-  include_directories("${CMAKE_SOURCE_DIR}/back-ends/dlfcn")
-endif()
-
 if(HAVE_OPENFST)
     add_subdirectory(openfst)
     if(WIN32)
