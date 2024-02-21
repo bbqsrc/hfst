@@ -1,17 +1,33 @@
-target_compile_options(hfst PRIVATE
-    "-Wno-deprecated" "-Wall" "-Wextra"
-    "-Wno-unused-parameter" "-Wno-sign-compare" "-g"
-    "-I."
-    "-I${PROJECT_SOURCE_DIR}/libhfst/src"
-    "-I${PROJECT_SOURCE_DIR}/back-ends")
+if(NOT WIN32)
+    target_compile_options(hfst PRIVATE
+        "-Wno-deprecated" "-Wall" "-Wextra"
+        "-Wno-unused-parameter" "-Wno-sign-compare" "-g"
+        "-I."
+        "-I${PROJECT_SOURCE_DIR}/libhfst/src"
+        "-I${PROJECT_SOURCE_DIR}/back-ends")
+else()
+    target_compile_options(hfst PRIVATE
+        "/I."
+        "/I${PROJECT_SOURCE_DIR}/libhfst/src"
+        "/I${PROJECT_SOURCE_DIR}/back-ends")
+endif()
 
-target_include_directories(hfst PUBLIC
+# message(${INCLUDES})
+
+# message(${ICU_LIBRARIES})
+
+target_include_directories(hfst PRIVATE
     ${ICU_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 find_library(UC icuuc)
+if(NOT WIN32)
 find_library(I18N icui18n)
 find_library(DATA icudata)
+else()
+find_library(I18N icuin)
+find_library(DATA icudt)
+endif()
 
 add_subdirectory(parsers)
 add_subdirectory(implementations)

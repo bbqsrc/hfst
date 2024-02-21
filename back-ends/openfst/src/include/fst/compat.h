@@ -20,6 +20,12 @@
 #ifndef FST_LIB_COMPAT_H__
 #define FST_LIB_COMPAT_H__
 
+#ifdef _MSC_VER
+  #define strdup _strdup
+  #define isatty _isatty
+  #define fileno _fileno
+#endif // _MSC_VER
+
 #include <dlfcn.h>
 
 #include <climits>

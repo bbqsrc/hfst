@@ -12,15 +12,21 @@ if(APPLE)
     set(ENV{PKG_CONFIG_PATH} "/opt/homebrew/lib/pkgconfig")
 endif()
 
+if(WIN32)
+    set(YY_NO_UNISTD_H " ")
+    find_package(ICU)
+    set(CMAKE_CXX_FLAGS "/DWINDOWS /DHFSTEXPORT /DHAVE_CONFIG_H /I${CMAKE_CURRENT_SOURCE_DIR} /D_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS /std:c++14 ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "/DWINDOWS /DHFSTEXPORT /DHAVE_CONFIG_H /D_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS /I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_C_FLAGS}")
+else()
+    find_package(PkgConfig)
+    include_directories(ICU_INCLUDE_DIRS)
+    pkg_check_modules(ICU icu-uc REQUIRED)
+    set(CMAKE_CXX_FLAGS "-std=c++14 -w -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS "-w -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_C_FLAGS}")
+endif()
+
 find_package(FLEX 2.6 REQUIRED)
 find_package(BISON 3.0 REQUIRED)
-
-find_package(PkgConfig)
-include_directories(ICU_INCLUDE_DIRS)
-pkg_check_modules(ICU icu-uc REQUIRED)
-
-set(CMAKE_CXX_FLAGS "-std=c++14 -w -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CXX_FLAGS}")
-set(CMAKE_C_FLAGS "-w -DHAVE_CONFIG_H -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_C_FLAGS}")
 
 check_include_file_cxx("backward/hash_map" HAVE_BACKWARD_HASH_MAP)
 check_include_file_cxx("backward/hash_set" HAVE_BACKWARD_HASH_SET)

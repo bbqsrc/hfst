@@ -26,7 +26,7 @@
 #elif SGI__gnu_cxx
 #  include <ext/hash_map>
 #else
-#  warning "unknown hash_map"
+// #  warning "unknown hash_map"
 #  include <hash_map>
 #endif
 #if HAVE_BACKWARD_HASH_SET
@@ -40,7 +40,7 @@
 #elif SGI__gnu_cxx
 #  include <ext/hash_set>
 #else
-#  warning "missing hash_set"
+// #  warning "missing hash_set"
 #  include <hash_set>
 #endif
 
