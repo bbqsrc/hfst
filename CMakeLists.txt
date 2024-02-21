@@ -105,9 +105,9 @@ set(USE_ICU_UNICODE 1)
 set(YYTEXT_POINTER 1)
 
 # set(HAVE_SFST " ")
-set(HAVE_FOMA " ")
-set(HAVE_OPENFST " ")
-set(HAVE_OPENFST_LOG " ")
+# set(HAVE_FOMA " ")
+# set(HAVE_OPENFST " ")
+# set(HAVE_OPENFST_LOG " ")
 set(HAVE_HFSTOL " ")
 
 configure_file(config.h.in config.h)

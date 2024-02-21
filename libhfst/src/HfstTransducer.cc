@@ -1252,6 +1252,7 @@ HfstTransducer::HfstTransducer
         ConversionFunctions::hfst_basic_transducer_to_xfsm(&net);
         break;
 #endif
+#if HAVE_OPENFST
     case HFST_OL_TYPE:
         implementation.hfst_ol =
         ConversionFunctions::hfst_basic_transducer_to_hfst_ol(&net, false);
@@ -1260,6 +1261,7 @@ HfstTransducer::HfstTransducer
         implementation.hfst_ol =
         ConversionFunctions::hfst_basic_transducer_to_hfst_ol(&net, true);
         break;
+#endif
     case ERROR_TYPE:
         HFST_THROW(TransducerHasWrongTypeException);
     default:
