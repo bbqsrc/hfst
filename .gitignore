@@ -313,3 +313,16 @@ hfst-eliminate-flags
 
 /.ccls-cache
 /compile_commands.json
+
+# cmake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps

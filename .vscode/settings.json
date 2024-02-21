@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.lu": "rust",
+        "stack": "cpp",
+        "istream": "cpp",
+        "stdbool.h": "c"
+    }
+}

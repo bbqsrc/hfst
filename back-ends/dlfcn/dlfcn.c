@@ -238,7 +238,7 @@ void *dlopen( const char *file, int mode )
 
 int dlclose( void *handle )
 {
-    HMODULE hModule = (HMODULE) handle;
+    HMODULE hModule = (HOBJECT) handle;
     BOOL ret;
 
     current_error = NULL;

@@ -217,7 +217,7 @@ namespace hfst { namespace implementations {
   }
 
   FomaTransducer::FomaTransducer() {
-    _Bool val = 1;
+    bool val = 1;
     fsm_set_option(FSMO_SKIP_WORD_BOUNDARY_MARKER, &val);
   }
 
