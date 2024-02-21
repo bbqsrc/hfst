@@ -84,6 +84,7 @@ add_library(parsers OBJECT
 target_include_directories(parsers PRIVATE 
     ${ICU_INCLUDE_DIRS}
     ${CMAKE_SOURCE_DIR}
+    ${CMAKE_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
     "${CMAKE_SOURCE_DIR}/back-ends"
