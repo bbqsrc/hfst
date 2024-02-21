@@ -1,7 +1,14 @@
 target_include_directories(hfst PRIVATE "${CMAKE_SOURCE_DIR}/back-ends/foma")
 
+if(HAVE_SFST)
+    target_sources(hfst PRIVATE
+        SfstTransducer.cc
+        ConvertSfstTransducer.cc 
+    )
+endif()
+
 target_sources(hfst PRIVATE
-    SfstTransducer.cc
+    # SfstTransducer.cc
     TropicalWeightTransducer.cc
     LogWeightTransducer.cc
     FomaTransducer.cc
@@ -11,7 +18,7 @@ target_sources(hfst PRIVATE
     ConvertTransducerFormat.cc 
     HfstTropicalTransducerTransitionData.cc 
     HfstBasicTransition.cc HfstBasicTransducer.cc 
-    ConvertSfstTransducer.cc ConvertTropicalWeightTransducer.cc 
+    ConvertTropicalWeightTransducer.cc 
     ConvertLogWeightTransducer.cc ConvertFomaTransducer.cc 
     ConvertOlTransducer.cc ConvertXfsmTransducer.cc 
             compose_intersect/ComposeIntersectRulePair.cc 

@@ -38,6 +38,9 @@ target_sources(hfst PRIVATE
     string-utils.cc
 )
 target_link_libraries(hfst PRIVATE ${UC} ${I18N} ${DATA} parsers)
-target_link_libraries(hfst PUBLIC openfst foma sfst)
+if(HAVE_SFST)
+    target_link_libraries(hfst PUBLIC sfst)
+endif()
+target_link_libraries(hfst PUBLIC openfst foma)
 target_compile_options(hfst PUBLIC ${ICU_CFLAGS_OTHER})
 

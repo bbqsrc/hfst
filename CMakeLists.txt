@@ -104,7 +104,7 @@ set(STDC_HEADERS 1)
 set(USE_ICU_UNICODE 1)
 set(YYTEXT_POINTER 1)
 
-set(HAVE_SFST " ")
+# set(HAVE_SFST " ")
 set(HAVE_FOMA " ")
 set(HAVE_OPENFST " ")
 set(HAVE_OPENFST_LOG " ")
@@ -119,3 +119,4 @@ add_subdirectory(libhfst)
 # add_subdirectory(doc)
 # add_subdirectory(man)
 # add_subdirectory(scripts)
+

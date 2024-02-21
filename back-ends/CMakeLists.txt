@@ -8,5 +8,8 @@
 
 # add_subdirectory(dlfcn)
 add_subdirectory(openfst)
-add_subdirectory(sfst)
+
+if(HAVE_SFST)
+    add_subdirectory(sfst)
+endif()
 add_subdirectory(foma)

@@ -20,12 +20,16 @@ flex_target(LexcLex lexc-lexer.ll
 bison_target(LexcParse lexc-parser.yy
     ${CMAKE_CURRENT_BINARY_DIR}/lexc-parser.cc
     DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/lexc-parser.hh)
+
+if(HAVE_SFST)
 flex_target(SfstScanner sfst-scanner.ll
     ${CMAKE_CURRENT_BINARY_DIR}/sfst-scanner.cc
     DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/sfst-scanner.hh)
 bison_target(SfstCompiler sfst-compiler.yy
     ${CMAKE_CURRENT_BINARY_DIR}/sfst-compiler.cc
     DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/sfst-compiler.hh)
+endif()
+
 flex_target(XfstLex xfst-lexer.ll
     ${CMAKE_CURRENT_BINARY_DIR}/xfst-lexer.cc
     DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/xfst-lexer.hh)
@@ -66,8 +70,8 @@ add_library(parsers OBJECT
     ${FLEX_PmatchLex_OUTPUTS}
     ${FLEX_LexcLex_OUTPUTS}
     ${BISON_LexcParse_OUTPUTS}
-    ${FLEX_SfstScanner_OUTPUTS}
-    ${BISON_SfstCompiler_OUTPUTS}
+    # ${FLEX_SfstScanner_OUTPUTS}
+    # ${BISON_SfstCompiler_OUTPUTS}
     ${FLEX_XfstLex_OUTPUTS}
     ${BISON_XfstParse_OUTPUTS}
     ${FLEX_Htwolcpre1Lex_OUTPUTS}
@@ -88,47 +92,16 @@ target_include_directories(parsers PRIVATE
 
 add_dependencies(hfst parsers)
 
+
+if(HAVE_SFST)
+    target_source(hfst PUBLIC SfstCompiler.cc SfstUtf8.cc SfstBasic.cc SfstAlphabet.cc)
+endif()
+
 target_sources(hfst PUBLIC
-    # xre_parse.yy 
-    # ${BISON_XreParse_OUTPUT_SOURCE}
-    # ${FLEX_XreLex_INPUT}
-    # ${BISON_PmatchParse_INPUT}
-    # ${FLEX_PmatchLex_INPUT}
-    # ${FLEX_LexcLex_INPUT}
-    # ${BISON_LexcParse_INPUT}
-    # ${FLEX_SfstScanner_INPUT}
-    # ${BISON_SfstCompiler_INPUT}
-    # ${FLEX_XfstLex_INPUT}
-    # ${BISON_XfstParse_INPUT}
-    # ${FLEX_Htwolcpre1Lex_INPUT}
-    # ${BISON_Htwolcpre1Parse_INPUT}
-    # ${FLEX_Htwolcpre2Lex_INPUT}
-    # ${BISON_Htwolcpre2Parse_INPUT}
-    # ${FLEX_Htwolcpre3Lex_INPUT}
-    # ${BISON_Htwolcpre3Parse_INPUT}
-
-    # ${BISON_XreParse_OUTPUTS}
-    # ${FLEX_XreLex_OUTPUTS}
-    # ${BISON_PmatchParse_OUTPUTS}
-    # ${FLEX_PmatchLex_OUTPUTS}
-    # ${FLEX_LexcLex_OUTPUTS}
-    # ${BISON_LexcParse_OUTPUTS}
-    # ${FLEX_SfstScanner_OUTPUTS}
-    # ${BISON_SfstCompiler_OUTPUTS}
-    # ${FLEX_XfstLex_OUTPUTS}
-    # ${BISON_XfstParse_OUTPUTS}
-    # ${FLEX_Htwolcpre1Lex_OUTPUTS}
-    # ${BISON_Htwolcpre1Parse_OUTPUTS}
-    # ${FLEX_Htwolcpre2Lex_OUTPUTS}
-    # ${BISON_Htwolcpre2Parse_OUTPUTS}
-    # ${FLEX_Htwolcpre3Lex_OUTPUTS}
-    # ${BISON_Htwolcpre3Parse_OUTPUTS}
-
     xre_utils.cc XreCompiler.cc
     # xre_parse.cc xre_lex.cc
     pmatch_utils.cc PmatchCompiler.cc # pmatch_parse.cc pmatch_lex.cc
     lexc-utils.cc LexcCompiler.cc # lexc-parser.cc lexc-lexer.cc
-    SfstCompiler.cc SfstUtf8.cc SfstBasic.cc SfstAlphabet.cc # sfst-compiler.cc sfst-scanner.cc
     xfst-utils.cc XfstCompiler.cc xfst_help_message.cc # xfst-parser.cc xfst-lexer.cc
    
     TwolcCompiler.cc 
