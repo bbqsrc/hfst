@@ -1,6 +1,5 @@
 if(HAVE_OPENFST)
-    add_subdirectory(openfst)
-    if(WIN32)
+    if(NOT WIN32)
         add_subdirectory(openfst)
     else()
         add_subdirectory(openfstwin)

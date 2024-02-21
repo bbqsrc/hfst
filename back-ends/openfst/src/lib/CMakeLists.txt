@@ -1,8 +1,3 @@
-# target_compile_options(openfst PRIVATE
-#     "-I../include"
-    
-# )
-
 target_include_directories(openfst PUBLIC
     ${ICU_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}/../include)
