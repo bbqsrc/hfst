@@ -1,5 +1,6 @@
 target_include_directories(hfst PRIVATE 
-    ${CMAKE_CURRENT_SOURCE_DIR})
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR})
 
 bison_target(XreParse xre_parse.yy 
     ${CMAKE_CURRENT_BINARY_DIR}/xre_parse.cc
@@ -83,6 +84,7 @@ add_library(parsers OBJECT
 target_include_directories(parsers PRIVATE 
     ${ICU_INCLUDE_DIRS}
     ${CMAKE_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
     "${CMAKE_SOURCE_DIR}/back-ends"
     "${CMAKE_SOURCE_DIR}/back-ends/openfst/src/include"
@@ -90,7 +92,6 @@ target_include_directories(parsers PRIVATE
 )
 
 add_dependencies(hfst parsers)
-
 
 if(HAVE_SFST)
     target_sources(hfst PUBLIC
