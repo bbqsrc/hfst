@@ -21,6 +21,7 @@
 #include <set>
 
 #ifdef _MSC_VER
+  #include <io.h>
   #define strdup _strdup
   #define isatty _isatty
   #define fileno _fileno
