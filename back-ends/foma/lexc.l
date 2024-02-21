@@ -24,6 +24,7 @@
 %{
 #include <stdio.h>
 #include "foma.h"
+#include <config.h>
 #include "lexc.h"
 
 #define SOURCE_LEXICON 0
