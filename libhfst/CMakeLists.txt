@@ -1,3 +1,3 @@
-add_library(hfst SHARED)
+add_library(hfst STATIC)
 
 add_subdirectory(src)
