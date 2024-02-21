@@ -216,7 +216,7 @@ stamp-h?
 /libhfst/src/parsers/lexc-lexer.hh
 /libhfst/src/parsers/pmatch_lex.hh
 /libhfst/src/parsers/xfst-lexer.hh
-/libhfst/src/parsers/xre_lex.hh										
+/libhfst/src/parsers/xre_lex.hh
 
 # Otherwise generated code
 /libhfst/hfst.pc

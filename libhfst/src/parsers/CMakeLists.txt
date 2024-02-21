@@ -105,7 +105,7 @@ target_sources(hfst PUBLIC
     xfst-utils.cc XfstCompiler.cc xfst_help_message.cc # xfst-parser.cc xfst-lexer.cc
    
     TwolcCompiler.cc 
-    commandline_src/CommandLine.cc 
+    # commandline_src/CommandLine.cc 
     alphabet_src/Alphabet.cc 
     io_src/InputReader.cc 
     rule_src/ConflictResolvingLeftArrowRule.cc 
