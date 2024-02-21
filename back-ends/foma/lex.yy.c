@@ -1710,6 +1710,7 @@ static const flex_int32_t yy_rule_can_match_eol[130] =
 #line 23 "regex.l"
 #include <stdio.h>
 #include "foma.h"
+#include <config.h>
 #include "regex.h"
 
 struct defs {
