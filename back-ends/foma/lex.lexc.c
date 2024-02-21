@@ -1627,7 +1627,7 @@ void lexc_trim(char *s) {
 #define DEFREGEXB 10
 #define DEFREGEXQ 11
 #define EATUPINFO 12
-#define YY_NO_UNISTD_H
+
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
  * down here because we want the user's section 1 to have been scanned first.
