@@ -6,6 +6,8 @@ include(CheckIncludeFileCXX)
 include(CheckLibraryExists)
 include(CheckFunctionExists)
 
+include_directories(${CMAKE_BINARY_DIR})
+
 if(APPLE)
     list(APPEND CMAKE_PREFIX_PATH /opt/homebrew)
     set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/homebrew/lib)
