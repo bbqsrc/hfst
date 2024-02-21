@@ -25,6 +25,8 @@
 %{
 #include <stdio.h>
 #include "foma.h"
+#include <config.h>
+
 #define RE 0 /* regex  */
 #define DE 1 /* define */
 
