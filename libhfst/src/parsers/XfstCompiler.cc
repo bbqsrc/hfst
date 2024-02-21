@@ -4472,7 +4472,6 @@ namespace xfst {
   char * XfstCompiler::xfst_getline(FILE * file, const std::string & promptstr)
   {
 #ifdef HAVE_READLINE
-#error wtf
     if (use_readline_ && file == stdin)
       {
         char *buf = NULL;               // result from readline

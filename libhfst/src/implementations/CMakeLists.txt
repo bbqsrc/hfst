@@ -25,9 +25,6 @@ if(HAVE_FOMA)
 endif()
 
 target_sources(hfst PRIVATE
-    # SfstTransducer.cc
-    # XfsmTransducer.cc
-    # OtherSymbolTransducer.cc
     HfstOlTransducer.cc
     ConvertTransducerFormat.cc 
     HfstBasicTransition.cc
@@ -35,11 +32,11 @@ target_sources(hfst PRIVATE
     ConvertOlTransducer.cc
     ConvertXfsmTransducer.cc 
     HfstTropicalTransducerTransitionData.cc 
-            compose_intersect/ComposeIntersectRulePair.cc 
-            compose_intersect/ComposeIntersectLexicon.cc 
-            compose_intersect/ComposeIntersectRule.cc 
-            compose_intersect/ComposeIntersectFst.cc 
-            compose_intersect/ComposeIntersectUtilities.cc
+    compose_intersect/ComposeIntersectRulePair.cc 
+    compose_intersect/ComposeIntersectLexicon.cc 
+    compose_intersect/ComposeIntersectRule.cc 
+    compose_intersect/ComposeIntersectFst.cc 
+    compose_intersect/ComposeIntersectUtilities.cc
     optimized-lookup/transducer.cc 
     optimized-lookup/ospell.cc
     optimized-lookup/pmatch.cc 

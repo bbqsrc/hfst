@@ -1,4 +1,3 @@
-# file(GLOB_RECURSE SOURCES "*.cc")
 target_include_directories(hfst PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -70,8 +69,8 @@ add_library(parsers OBJECT
     ${FLEX_PmatchLex_OUTPUTS}
     ${FLEX_LexcLex_OUTPUTS}
     ${BISON_LexcParse_OUTPUTS}
-    # ${FLEX_SfstScanner_OUTPUTS}
-    # ${BISON_SfstCompiler_OUTPUTS}
+    ${FLEX_SfstScanner_OUTPUTS}
+    ${BISON_SfstCompiler_OUTPUTS}
     ${FLEX_XfstLex_OUTPUTS}
     ${BISON_XfstParse_OUTPUTS}
     ${FLEX_Htwolcpre1Lex_OUTPUTS}
@@ -94,15 +93,15 @@ add_dependencies(hfst parsers)
 
 
 if(HAVE_SFST)
-    target_source(hfst PUBLIC SfstCompiler.cc SfstUtf8.cc SfstBasic.cc SfstAlphabet.cc)
+    target_source(hfst PUBLIC
+        SfstCompiler.cc SfstUtf8.cc SfstBasic.cc SfstAlphabet.cc)
 endif()
 
 target_sources(hfst PUBLIC
     xre_utils.cc XreCompiler.cc
-    # xre_parse.cc xre_lex.cc
-    pmatch_utils.cc PmatchCompiler.cc # pmatch_parse.cc pmatch_lex.cc
-    lexc-utils.cc LexcCompiler.cc # lexc-parser.cc lexc-lexer.cc
-    xfst-utils.cc XfstCompiler.cc xfst_help_message.cc # xfst-parser.cc xfst-lexer.cc
+    pmatch_utils.cc PmatchCompiler.cc
+    lexc-utils.cc LexcCompiler.cc
+    xfst-utils.cc XfstCompiler.cc xfst_help_message.cc
    
     TwolcCompiler.cc 
     # commandline_src/CommandLine.cc 
@@ -124,5 +123,4 @@ target_sources(hfst PUBLIC
     variable_src/RuleVariables.cc 
     variable_src/RuleVariablesConstIterator.cc 
     variable_src/VariableValues.cc
-    # htwolcpre1-parser.cc htwolcpre1-lexer.cc htwolcpre2-parser.cc htwolcpre2-lexer.cc htwolcpre3-parser.cc htwolcpre3-lexer.cc
 )
