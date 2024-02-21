@@ -23,7 +23,7 @@
 #define GUARD_hfst_tool_metadata_h
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 

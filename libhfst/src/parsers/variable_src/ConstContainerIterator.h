@@ -20,7 +20,7 @@
 #define CONST_CONTAINER_ITERATOR_H_
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include "VariableDefs.h"

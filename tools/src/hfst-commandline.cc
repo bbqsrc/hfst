@@ -17,7 +17,7 @@
 
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #else
 #  define PACKAGE_STRING ""
 #  define PACKAGE_BUGREPORT ""

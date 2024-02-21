@@ -12,7 +12,7 @@
 #define _SGI_INCLUDED
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #if HAVE_BACKWARD_HASH_MAP

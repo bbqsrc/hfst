@@ -26,7 +26,7 @@
 #define INPUT_READER_H
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <iostream>

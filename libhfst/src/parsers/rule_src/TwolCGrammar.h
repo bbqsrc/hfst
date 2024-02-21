@@ -21,7 +21,7 @@
 #define TWOL_C_GRAMMAR_H_
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include "HfstTwolcDefs.h"

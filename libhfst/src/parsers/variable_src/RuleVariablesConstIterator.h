@@ -20,7 +20,7 @@
 #define RULE_VARIABLES_CONST_ITERATOR_H_
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include "RuleVariables.h"

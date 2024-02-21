@@ -24,7 +24,7 @@
 #define GUARD_hfst_commandline_h
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 // most all HFST commandline programs will use both c++ and c io unfortunately
 #include <iostream>

@@ -10,7 +10,7 @@
 #ifndef MAIN_TEST
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #if HAVE_OPENFST_LOG || HAVE_LEAN_OPENFST_LOG

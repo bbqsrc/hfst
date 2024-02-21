@@ -20,7 +20,7 @@
 #define LEFT_ARROW_RULE_CONTAINER_H_
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <map>

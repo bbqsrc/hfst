@@ -16,7 +16,7 @@
 #ifndef GUARD_lexc_utils_h
 #define GUARD_lexc_utils_h
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 #include <string>
 

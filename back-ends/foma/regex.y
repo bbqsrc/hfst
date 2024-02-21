@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "foma.h"
-#include <config.h>
+#include "config.h"
 #define MAX_F_RECURSION 100
 extern int yyerror();
 extern int yylex();

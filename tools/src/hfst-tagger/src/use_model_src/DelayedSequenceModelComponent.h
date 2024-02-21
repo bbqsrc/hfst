@@ -2,7 +2,7 @@
 #define HEADER_DelayedSequenceModelComponent_h
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include "SequenceModelComponent.h"

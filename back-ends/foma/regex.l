@@ -22,7 +22,7 @@
 %{
 #include <stdio.h>
 #include "foma.h"
-#include <config.h>
+#include "config.h"
 #include "regex.h"
 
 struct defs {
