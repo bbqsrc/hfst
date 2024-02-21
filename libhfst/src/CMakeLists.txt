@@ -26,7 +26,6 @@ find_library(DATA icudata)
 
 add_subdirectory(parsers)
 add_subdirectory(implementations)
-
 target_sources(hfst PRIVATE
     HfstApply.cc HfstInputStream.cc HfstTransducer.cc HfstOutputStream.cc
     HfstRules.cc HfstXeroxRules.cc HfstDataTypes.cc
@@ -38,7 +37,7 @@ target_sources(hfst PRIVATE
     HfstPrintDot.cc HfstPrintPCKimmo.cc hfst-string-conversions.cc
     string-utils.cc
 )
-target_link_libraries(hfst PRIVATE ${UC} ${I18N} ${DATA})
+target_link_libraries(hfst PRIVATE ${UC} ${I18N} ${DATA} parsers)
 target_link_libraries(hfst PUBLIC openfst foma sfst)
 target_compile_options(hfst PUBLIC ${ICU_CFLAGS_OTHER})
 

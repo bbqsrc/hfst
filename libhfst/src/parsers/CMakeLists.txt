@@ -2,13 +2,135 @@
 target_include_directories(hfst PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_sources(hfst PRIVATE
-    xre_utils.cc XreCompiler.cc xre_parse.cc xre_lex.cc
-    pmatch_utils.cc PmatchCompiler.cc pmatch_parse.cc pmatch_lex.cc
-    lexc-utils.cc LexcCompiler.cc lexc-parser.cc lexc-lexer.cc
-    SfstCompiler.cc SfstUtf8.cc SfstBasic.cc SfstAlphabet.cc sfst-compiler.cc sfst-scanner.cc
-    xfst-utils.cc XfstCompiler.cc xfst_help_message.cc xfst-parser.cc xfst-lexer.cc
+bison_target(XreParse xre_parse.yy 
+    ${CMAKE_CURRENT_BINARY_DIR}/xre_parse.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/xre_parse.hh)
+flex_target(XreLex xre_lex.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/xre_lex.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/xre_lex.hh)
+bison_target(PmatchParse pmatch_parse.yy 
+    ${CMAKE_CURRENT_BINARY_DIR}/pmatch_parse.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/pmatch_parse.hh)
+flex_target(PmatchLex pmatch_lex.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/pmatch_lex.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/pmatch_lex.hh)
+flex_target(LexcLex lexc-lexer.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/lexc-lexer.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/lexc-lexer.hh)
+bison_target(LexcParse lexc-parser.yy
+    ${CMAKE_CURRENT_BINARY_DIR}/lexc-parser.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/lexc-parser.hh)
+flex_target(SfstScanner sfst-scanner.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/sfst-scanner.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/sfst-scanner.hh)
+bison_target(SfstCompiler sfst-compiler.yy
+    ${CMAKE_CURRENT_BINARY_DIR}/sfst-compiler.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/sfst-compiler.hh)
+flex_target(XfstLex xfst-lexer.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/xfst-lexer.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/xfst-lexer.hh)
+bison_target(XfstParse xfst-parser.yy
+    ${CMAKE_CURRENT_BINARY_DIR}/xfst-parser.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/xfst-parser.hh)
 
+flex_target(Htwolcpre1Lex htwolcpre1-lexer.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre1-lexer.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre1-lexer.hh)
+bison_target(Htwolcpre1Parse htwolcpre1-parser.yy
+    ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre1-parser.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre1-parser.hh)
+
+flex_target(Htwolcpre2Lex htwolcpre2-lexer.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre2-lexer.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre2-lexer.hh)
+bison_target(Htwolcpre2Parse htwolcpre2-parser.yy
+    ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre2-parser.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre2-parser.hh)
+
+flex_target(Htwolcpre3Lex htwolcpre3-lexer.ll
+    ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre3-lexer.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre3-lexer.hh)
+bison_target(Htwolcpre3Parse htwolcpre3-parser.yy
+    ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre3-parser.cc
+    DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/htwolcpre3-parser.hh)
+
+add_flex_bison_dependency(
+    XreLex
+    XreParse
+)
+
+add_library(parsers OBJECT 
+    ${BISON_XreParse_OUTPUTS}
+    ${FLEX_XreLex_OUTPUTS}
+    ${BISON_PmatchParse_OUTPUTS}
+    ${FLEX_PmatchLex_OUTPUTS}
+    ${FLEX_LexcLex_OUTPUTS}
+    ${BISON_LexcParse_OUTPUTS}
+    ${FLEX_SfstScanner_OUTPUTS}
+    ${BISON_SfstCompiler_OUTPUTS}
+    ${FLEX_XfstLex_OUTPUTS}
+    ${BISON_XfstParse_OUTPUTS}
+    ${FLEX_Htwolcpre1Lex_OUTPUTS}
+    ${BISON_Htwolcpre1Parse_OUTPUTS}
+    ${FLEX_Htwolcpre2Lex_OUTPUTS}
+    ${BISON_Htwolcpre2Parse_OUTPUTS}
+    ${FLEX_Htwolcpre3Lex_OUTPUTS}
+    ${BISON_Htwolcpre3Parse_OUTPUTS})
+
+target_include_directories(parsers PRIVATE 
+    ${ICU_INCLUDE_DIRS}
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    "${CMAKE_SOURCE_DIR}/back-ends"
+    "${CMAKE_SOURCE_DIR}/back-ends/openfst/src/include"
+    "${CMAKE_SOURCE_DIR}/libhfst/src"
+)
+
+add_dependencies(hfst parsers)
+
+target_sources(hfst PUBLIC
+    # xre_parse.yy 
+    # ${BISON_XreParse_OUTPUT_SOURCE}
+    # ${FLEX_XreLex_INPUT}
+    # ${BISON_PmatchParse_INPUT}
+    # ${FLEX_PmatchLex_INPUT}
+    # ${FLEX_LexcLex_INPUT}
+    # ${BISON_LexcParse_INPUT}
+    # ${FLEX_SfstScanner_INPUT}
+    # ${BISON_SfstCompiler_INPUT}
+    # ${FLEX_XfstLex_INPUT}
+    # ${BISON_XfstParse_INPUT}
+    # ${FLEX_Htwolcpre1Lex_INPUT}
+    # ${BISON_Htwolcpre1Parse_INPUT}
+    # ${FLEX_Htwolcpre2Lex_INPUT}
+    # ${BISON_Htwolcpre2Parse_INPUT}
+    # ${FLEX_Htwolcpre3Lex_INPUT}
+    # ${BISON_Htwolcpre3Parse_INPUT}
+
+    # ${BISON_XreParse_OUTPUTS}
+    # ${FLEX_XreLex_OUTPUTS}
+    # ${BISON_PmatchParse_OUTPUTS}
+    # ${FLEX_PmatchLex_OUTPUTS}
+    # ${FLEX_LexcLex_OUTPUTS}
+    # ${BISON_LexcParse_OUTPUTS}
+    # ${FLEX_SfstScanner_OUTPUTS}
+    # ${BISON_SfstCompiler_OUTPUTS}
+    # ${FLEX_XfstLex_OUTPUTS}
+    # ${BISON_XfstParse_OUTPUTS}
+    # ${FLEX_Htwolcpre1Lex_OUTPUTS}
+    # ${BISON_Htwolcpre1Parse_OUTPUTS}
+    # ${FLEX_Htwolcpre2Lex_OUTPUTS}
+    # ${BISON_Htwolcpre2Parse_OUTPUTS}
+    # ${FLEX_Htwolcpre3Lex_OUTPUTS}
+    # ${BISON_Htwolcpre3Parse_OUTPUTS}
+
+    xre_utils.cc XreCompiler.cc
+    # xre_parse.cc xre_lex.cc
+    pmatch_utils.cc PmatchCompiler.cc # pmatch_parse.cc pmatch_lex.cc
+    lexc-utils.cc LexcCompiler.cc # lexc-parser.cc lexc-lexer.cc
+    SfstCompiler.cc SfstUtf8.cc SfstBasic.cc SfstAlphabet.cc # sfst-compiler.cc sfst-scanner.cc
+    xfst-utils.cc XfstCompiler.cc xfst_help_message.cc # xfst-parser.cc xfst-lexer.cc
+   
     TwolcCompiler.cc 
     commandline_src/CommandLine.cc 
     alphabet_src/Alphabet.cc 
@@ -29,5 +151,5 @@ target_sources(hfst PRIVATE
     variable_src/RuleVariables.cc 
     variable_src/RuleVariablesConstIterator.cc 
     variable_src/VariableValues.cc
-    htwolcpre1-parser.cc htwolcpre1-lexer.cc htwolcpre2-parser.cc htwolcpre2-lexer.cc htwolcpre3-parser.cc htwolcpre3-lexer.cc
+    # htwolcpre1-parser.cc htwolcpre1-lexer.cc htwolcpre2-parser.cc htwolcpre2-lexer.cc htwolcpre3-parser.cc htwolcpre3-lexer.cc
 )

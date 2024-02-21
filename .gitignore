@@ -210,7 +210,13 @@ stamp-h?
 /libhfst/src/parsers/htwolcpre3-lexer.cc
 /libhfst/src/parsers/htwolcpre3-parser.cc
 /libhfst/src/parsers/htwolcpre3-parser.hh
-										
+/libhfst/src/parsers/htwolcpre1-lexer.hh
+/libhfst/src/parsers/htwolcpre2-lexer.hh
+/libhfst/src/parsers/htwolcpre3-lexer.hh
+/libhfst/src/parsers/lexc-lexer.hh
+/libhfst/src/parsers/pmatch_lex.hh
+/libhfst/src/parsers/xfst-lexer.hh
+/libhfst/src/parsers/xre_lex.hh										
 
 # Otherwise generated code
 /libhfst/hfst.pc

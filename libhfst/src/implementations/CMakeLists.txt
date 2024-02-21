@@ -1,3 +1,5 @@
+target_include_directories(hfst PRIVATE "${CMAKE_SOURCE_DIR}/back-ends/foma")
+
 target_sources(hfst PRIVATE
     SfstTransducer.cc
     TropicalWeightTransducer.cc
