@@ -20,7 +20,7 @@
 #define VARIABLE_VALUE_ITERATOR_H_
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 class VariableValues;

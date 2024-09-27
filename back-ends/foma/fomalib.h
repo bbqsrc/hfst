@@ -216,7 +216,7 @@ typedef enum {
 	FSMO_SKIP_WORD_BOUNDARY_MARKER, // _Bool
 	FSMO_NUM_OPTIONS
 } FSM_OPTIONS;
-inline _Bool fsm_set_option(unsigned long long option, void *value) {
+inline bool fsm_set_option(unsigned long long option, void *value) {
 	return 1;
 }
 

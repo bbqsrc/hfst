@@ -8,7 +8,7 @@
 // information.
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <algorithm>
@@ -306,6 +306,7 @@ void get_states_and_symbols(
   (const HfstBasicTransducer * t, bool weighted, std::string options,
    HfstTransducer * harmonizer)
   {
+#if HAVE_OPENFST
       const float packing_aggression = (float)0.85; // double -> const float
       const int floor_jump_threshold = 4; // a packing aggression parameter
 
@@ -471,6 +472,9 @@ void get_states_and_symbols(
                                    alphabet,
                                    windex_table,
                                    wtransition_table);
+#else
+    return NULL;
+#endif
   }
 
 HfstTransducer * ConversionFunctions::hfst_ol_to_hfst_transducer(

@@ -20,7 +20,7 @@
 #define CONFLICT_RESOLVING_LEFT_ARROW_RULE_H_
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include "LeftArrowRule.h"

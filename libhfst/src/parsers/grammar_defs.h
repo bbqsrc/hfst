@@ -20,7 +20,7 @@
 #define GRAMMAR_DEFS_H__
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <utility>

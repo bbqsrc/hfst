@@ -20,7 +20,7 @@
 #define HFST_TWOLC_DEFS_H_
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <map>

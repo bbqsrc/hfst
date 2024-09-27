@@ -17,7 +17,7 @@
 //! @author Tommi A. Pirinen
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 namespace hfst {

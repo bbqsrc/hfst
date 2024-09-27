@@ -15,7 +15,7 @@
 #define _SFST_ALPHABET_H_
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <unordered_map>

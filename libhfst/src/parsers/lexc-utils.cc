@@ -12,7 +12,7 @@
 //! @brief Implementation of some string handling in HFST lexc.
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <string>

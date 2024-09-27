@@ -20,7 +20,7 @@
 #define GUARD_HFST_HPP
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 /* This below is autoheadered, Try not to touch! */

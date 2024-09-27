@@ -18,7 +18,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 // c.f. <http://sourceforge.net/tracker/?func=detail&aid=954616&group_id=3275&atid=103275>

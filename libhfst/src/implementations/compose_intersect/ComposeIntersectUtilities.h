@@ -11,7 +11,7 @@
 #define HEADER_COMPOSE_INTERSECT_UTILITIES_H
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #include <vector>

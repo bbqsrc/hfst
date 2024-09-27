@@ -478,12 +478,12 @@ void lexc_set_current_word(char *name) {
 #define LEV_DIAG 2
 
 void lexc_medpad() {
-    int i, j, x, y, s1len, s2len, left, down, diag, dir;
+    int i, j, x, y, left, down, diag, dir;
 
     if (*cwordin == -1 && *cwordout == -1) {
-	*cwordin = *cwordout = EPSILON;
-	*(cwordin+1) = *(cwordout+1) = -1;
-	return;
+	    *cwordin = *cwordout = EPSILON;
+	    *(cwordin+1) = *(cwordout+1) = -1;
+	    return;
     }
 
     for (i = 0, j = 0; cwordin[i] != -1; i++) {
@@ -505,12 +505,19 @@ void lexc_medpad() {
     cwordout[j] = -1;
 
     for (i = 0; cwordin[i] != -1; i++) { }
-    s1len = i;
+    int s1len = i;
     for (i = 0; cwordout[i] != -1; i++) { }
-    s2len = i;
+    int s2len = i;
 
-    int matrix[s1len+2][s2len+2];
-    int dirmatrix[s1len+2][s2len+2];
+    int **matrix = (int **)malloc((s1len + 2) * sizeof(int *));
+    int **dirmatrix = (int **)malloc((s1len + 2) * sizeof(int *));
+
+
+    for (i = 0; i < s1len + 2; ++i)
+    {
+        matrix[i] = (int *)malloc((s2len + 2) * sizeof(int));
+        dirmatrix[i] = (int *)malloc((s2len + 2) * sizeof(int));
+    }
 
     matrix[0][0] = 0;
     dirmatrix[0][0] = 0;

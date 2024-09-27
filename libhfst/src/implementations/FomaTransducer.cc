@@ -10,7 +10,7 @@
 #ifndef MAIN_TEST
 
 #if HAVE_CONFIG_H
-#  include <config.h>
+#  include "config.h"
 #endif
 
 #if HAVE_FOMA
@@ -217,7 +217,7 @@ namespace hfst { namespace implementations {
   }
 
   FomaTransducer::FomaTransducer() {
-    _Bool val = 1;
+    bool val = 1;
     fsm_set_option(FSMO_SKIP_WORD_BOUNDARY_MARKER, &val);
   }
 

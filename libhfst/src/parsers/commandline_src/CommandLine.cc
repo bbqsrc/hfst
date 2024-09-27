@@ -18,6 +18,9 @@
 #  include "../../../hfst-getopt.h"
 #endif
 
+// For some reason the config.h header isn't found, but only here.
+#define PACKAGE_STRING "TODO"
+
 void CommandLine::print_version(void)
 {
   // c.f. http://www.gnu.org/prep/standards/standards.html#g_t_002d_002dversion
